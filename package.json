@@ -16,5 +16,9 @@
     "url": "https://github.com/Ninja3031/Codeforce_extension/issues"
   },
   "homepage": "https://github.com/Ninja3031/Codeforce_extension#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "bullmq": "^5.74.1",
+    "ioredis": "^5.10.1"
+  }
 }

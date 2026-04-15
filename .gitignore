@@ -1,0 +1,98 @@
+# =========================
+# Node.js / Express (Backend)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory
+coverage/
+
+# Build output
+dist/
+build/
+
+# =========================
+# React (Frontend)
+# =========================
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.*
+frontend/.eslintcache
+
+# Next.js / Vite / CRA (if applicable)
+.next/
+out/
+.vite/
+.cache/
+
+# =========================
+# Database
+# =========================
+*.sqlite
+*.db
+*.db-journal
+
+# MongoDB dump files
+dump/
+
+# =========================
+# OS / System files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+*.tar
+
+# =========================
+# Misc
+# =========================
+*.local
+*.tmp
+*.bak
+
+# =========================
+# Testing
+# =========================
+jest.config.js
+coverage/
+.nyc_output/
+
+# =========================
+# Optional (Uploads)
+# =========================
+uploads/
+public/uploads/
