@@ -1,0 +1,20 @@
+{
+  "name": "codeforce_extension",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ninja3031/Codeforce_extension.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ninja3031/Codeforce_extension/issues"
+  },
+  "homepage": "https://github.com/Ninja3031/Codeforce_extension#readme",
+  "description": ""
+}
