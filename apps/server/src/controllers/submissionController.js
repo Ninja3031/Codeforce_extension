@@ -5,6 +5,10 @@ export const createSubmission = async (req, res) => {
   try {
     const { userId, problemName, code } = req.body;
 
+    if (!userId || !problemName || !code) {
+      return res.status(400).json({ error: "Missing required fields: userId, problemName, and code are required." });
+    }
+
     // ✅ 1. Save to MongoDB
     const submission = await Submission.create({
       userId,

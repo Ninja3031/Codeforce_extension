@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { Octokit } from "@octokit/rest";
 
 const octokit = new Octokit({
@@ -9,7 +10,7 @@ export const pushToGithub = async ({ problemName, code, language, contestId }) =
   const repo = process.env.GITHUB_REPO;
 
   // ✅ Clean filename
-  const formattedName = problemName
+  const formattedName = (problemName || "unknown_problem")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "_");
 
@@ -29,14 +30,14 @@ export const pushToGithub = async ({ problemName, code, language, contestId }) =
   const folder = contestId ? `contest_${contestId}` : "practice";
 
   const fileName = `${folder}/${formattedName}.${extension}`;
-  const content = Buffer.from(code).toString("base64");
+  const content = Buffer.from(code || "").toString("base64");
 
   try {
     // 🔍 Check if file exists
     let sha = null;
 
     try {
-      const response = await octokit.repos.getContent({
+      const response = await octokit.rest.repos.getContent({
         owner,
         repo,
         path: fileName,
@@ -63,12 +64,12 @@ export const pushToGithub = async ({ problemName, code, language, contestId }) =
     if (sha) params.sha = sha;
 
     try {
-      await octokit.repos.createOrUpdateFileContents(params);
+      await octokit.rest.repos.createOrUpdateFileContents(params);
       console.log(`✅ ${sha ? "Updated" : "Created"}:`, fileName);
     } catch (err) {
       // 🔁 Retry if SHA issue
       if (err.status === 422 && /sha wasn't supplied/i.test(err.message || "")) {
-        const fresh = await octokit.repos.getContent({
+        const fresh = await octokit.rest.repos.getContent({
           owner,
           repo,
           path: fileName,
@@ -77,7 +78,7 @@ export const pushToGithub = async ({ problemName, code, language, contestId }) =
 
         if (!Array.isArray(fresh.data)) {
           params.sha = fresh.data.sha;
-          await octokit.repos.createOrUpdateFileContents(params);
+          await octokit.rest.repos.createOrUpdateFileContents(params);
           console.log(`🔁 Retried with SHA, updated:`, fileName);
         } else {
           throw err;
