@@ -12,7 +12,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://codeforces.com/contest/*"],
+      "matches": [
+        "https://codeforces.com/*",
+        "http://codeforces.com/*"
+      ],
       "js": ["content.js"],
       "css": ["styles.css"]
     }

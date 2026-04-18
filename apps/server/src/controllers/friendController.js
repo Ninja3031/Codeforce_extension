@@ -4,11 +4,14 @@ import { User } from "../models/userModel.js";
 // ➕ Add Friend (using CF handle)
 export const addFriend = async (req, res) => {
   try {
-    const { handle, friendHandle } = req.body;
+    const { handle, friends, friendHandle } = req.body;
 
-    if (!handle || !friendHandle) {
-      return res.status(400).json({ error: "handle and friendHandle are required" });
+    // Check if there is either an array of friends or a single friendHandle legacy
+    if (!handle || (!friends && !friendHandle)) {
+      return res.status(400).json({ error: "handle and friends array are required" });
     }
+
+    const friendsToAdd = Array.isArray(friends) ? friends : [friendHandle].filter(Boolean);
 
     // 🔍 find or create user
     let user = await User.findOne({ codeforcesHandle: handle });
@@ -20,17 +23,22 @@ export const addFriend = async (req, res) => {
       });
     }
 
-    // ❌ avoid duplicates
-    if (user.friends.includes(friendHandle)) {
-      return res.status(400).json({ error: "Friend already added" });
+    // ➕ add friends securely by checking duplicates
+    let addedCount = 0;
+    for (const f of friendsToAdd) {
+      const parsedFriend = String(f).trim();
+      if (parsedFriend && !user.friends.includes(parsedFriend)) {
+        user.friends.push(parsedFriend);
+        addedCount++;
+      }
     }
 
-    // ➕ add friend
-    user.friends.push(friendHandle);
-    await user.save();
+    if (addedCount > 0) {
+      await user.save();
+    }
 
     res.json({
-      message: "Friend added",
+      message: `${addedCount} friend(s) added`,
       user: handle,
       friends: user.friends,
     });

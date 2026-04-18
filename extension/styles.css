@@ -1,26 +1,184 @@
 .cf-leaderboard {
   position: fixed;
-  top: 100px;
-  right: 20px;
-  width: 220px;
-  background: #1e1e2f;
-  color: white;
-  padding: 12px;
-  border-radius: 10px;
+  top: 120px;
+  right: 30px;
+  width: 280px;
+  
+  /* Glassmorphism magic */
+  background: rgba(30, 30, 47, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  
+  color: #fff;
+  padding: 16px;
+  border-radius: 16px;
   z-index: 9999;
-  font-family: Arial;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
 }
 
-.cf-leaderboard h3 {
-  margin-top: 0;
+.cf-leaderboard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+}
+
+.cf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 8px;
+}
+
+.cf-header h3 {
+  margin: 0;
   font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.cf-close-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.cf-close-btn:hover {
+  color: #ff5252;
 }
 
 .cf-leaderboard ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.cf-leaderboard ul::-webkit-scrollbar {
+  width: 4px;
+}
+.cf-leaderboard ul::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
 }
 
 .cf-leaderboard li {
-  margin: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: background 0.2s;
+  align-items: center;
+}
+
+.cf-leaderboard li:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.cf-rank {
+  font-weight: 700;
+  width: 24px;
+  font-size: 14px;
+}
+
+.cf-handle {
+  flex: 1;
+  margin-left: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cf-solved {
+  font-weight: bold;
+  font-size: 14px;
+  background: rgba(255,255,255,0.15);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.cf-me {
+  color: #4caf50;
+  font-weight: bold;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.cf-top1 { color: #ffd700; }
+.cf-top2 { color: #c0c0c0; }
+.cf-top3 { color: #cd7f32; }
+
+/* Add Friends Input */
+.cf-add-friend-box {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.cf-add-friend-box input {
+  flex: 1;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.cf-add-friend-box input:focus {
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+/* Welcome Mode */
+.cf-welcome {
+  text-align: center;
+  padding: 10px 0;
+}
+.cf-welcome p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 12px;
+}
+
+/* Minimized Floating Button */
+.cf-minimized-btn {
+  position: fixed;
+  top: 120px;
+  right: 0px; /* Cling to right edge */
+  background: rgba(30, 30, 47, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: none;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 16px 0 0 16px;
+  z-index: 9999;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  box-shadow: -4px 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+}
+
+.cf-minimized-btn:hover {
+  padding-right: 20px;
+  background: rgba(50, 50, 70, 0.75);
+}
+
+.cf-hidden {
+  display: none !important;
 }
