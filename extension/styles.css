@@ -1,184 +1,324 @@
 .cf-leaderboard {
   position: fixed;
-  top: 120px;
+  top: 100px;
   right: 30px;
-  width: 280px;
+  width: 320px;
   
-  /* Glassmorphism magic */
-  background: rgba(30, 30, 47, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  /* Modern Crisp Light Glassmorphism */
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   
-  color: #fff;
-  padding: 16px;
-  border-radius: 16px;
+  color: #1a1a2e; /* Deep Dark Navy/Grey */
+  padding: 18px 20px;
+  border-radius: 24px;
   z-index: 9999;
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
 }
 
 .cf-leaderboard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
 }
 
 .cf-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 8px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 10px;
 }
 
 .cf-header h3 {
   margin: 0;
   font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: #111;
 }
 
 .cf-close-btn {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.04);
   border: none;
-  color: rgba(255,255,255,0.6);
-  font-size: 16px;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 11px;
+  font-weight: bold;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: all 0.2s;
   padding: 0;
 }
 
 .cf-close-btn:hover {
-  color: #ff5252;
+  background: #ff4757;
+  color: #fff;
+  transform: scale(1.1);
 }
 
 .cf-leaderboard ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 400px;
+  max-height: 300px;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .cf-leaderboard ul::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 .cf-leaderboard ul::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.2);
-  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
 }
 
 .cf-leaderboard li {
   display: flex;
   justify-content: space-between;
-  padding: 8px 10px;
-  border-radius: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
   margin-bottom: 6px;
-  transition: background 0.2s;
+  transition: all 0.2s ease-out;
   align-items: center;
+  border: 1px solid transparent;
 }
 
+/* Glass hover effect inside the list */
 .cf-leaderboard li:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transform: scale(1.02);
 }
 
 .cf-rank {
-  font-weight: 700;
-  width: 24px;
+  font-weight: 800;
+  width: 28px;
   font-size: 14px;
+  color: #888; /* Default rank color */
 }
 
 .cf-handle {
   flex: 1;
-  margin-left: 6px;
+  margin-left: 4px;
   font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #222;
 }
 
 .cf-solved {
-  font-weight: bold;
-  font-size: 14px;
-  background: rgba(255,255,255,0.15);
-  padding: 2px 8px;
-  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .cf-me {
-  color: #4caf50;
-  font-weight: bold;
-  background: rgba(76, 175, 80, 0.1);
+  background: rgba(59, 130, 246, 0.08) !important;
+  border: 1px solid rgba(59, 130, 246, 0.15) !important;
+}
+.cf-me .cf-handle {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+.cf-me .cf-solved {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
 }
 
-.cf-top1 { color: #ffd700; }
-.cf-top2 { color: #c0c0c0; }
-.cf-top3 { color: #cd7f32; }
+/* Codeforces typical colors for top ranks */
+.cf-top1 .cf-rank { color: #ef4444; } /* Red */
+.cf-top2 .cf-rank { color: #f59e0b; } /* Orange */
+.cf-top3 .cf-rank { color: #8b5cf6; } /* Purple */
+
+/* Delete Button */
+.cf-del-btn {
+  background: rgba(0, 0, 0, 0.03);
+  border: none;
+  border-radius: 4px;
+  color: #999;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 10px;
+  padding: 4px 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cf-del-btn:hover {
+  background: #ff4757;
+  color: #fff;
+}
 
 /* Add Friends Input */
 .cf-add-friend-box {
-  margin-top: 12px;
+  margin-top: 14px;
   display: flex;
   gap: 8px;
 }
 
 .cf-add-friend-box input {
   flex: 1;
-  background: rgba(0,0,0,0.2);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: #fff;
-  border-radius: 8px;
-  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #111;
+  border-radius: 10px;
+  padding: 10px 14px;
   font-size: 13px;
   outline: none;
-  transition: border 0.2s;
+  transition: all 0.2s;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.cf-add-friend-box input::placeholder {
+  color: #999;
 }
 
 .cf-add-friend-box input:focus {
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 /* Welcome Mode */
 .cf-welcome {
   text-align: center;
-  padding: 10px 0;
+  padding: 16px 10px;
 }
 .cf-welcome p {
   font-size: 13px;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 0;
 }
 
 /* Minimized Floating Button */
 .cf-minimized-btn {
   position: fixed;
-  top: 120px;
-  right: 0px; /* Cling to right edge */
-  background: rgba(30, 30, 47, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  top: 100px;
+  right: 0px; 
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-right: none;
-  color: #fff;
+  color: #333;
   padding: 12px 14px;
-  border-radius: 16px 0 0 16px;
+  border-radius: 12px 0 0 12px;
   z-index: 9999;
   cursor: pointer;
   font-family: inherit;
-  font-size: 18px;
-  box-shadow: -4px 4px 15px rgba(0,0,0,0.3);
-  transition: all 0.2s;
+  font-size: 14px;
+  box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cf-minimized-btn:hover {
+  background: #fff;
   padding-right: 20px;
-  background: rgba(50, 50, 70, 0.75);
+  box-shadow: -6px 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .cf-hidden {
   display: none !important;
 }
+
+/* Codeforces Official Rank Colors */
+.rank-newbie .cf-handle { color: #808080 !important; }
+.rank-pupil .cf-handle { color: #008000 !important; }
+.rank-specialist .cf-handle { color: #03a89e !important; }
+.rank-expert .cf-handle { color: #0000ff !important; }
+.rank-candidate-master .cf-handle { color: #aa00aa !important; }
+.rank-master .cf-handle,
+.rank-international-master .cf-handle { color: #ff8c00 !important; }
+.rank-grandmaster .cf-handle,
+.rank-international-grandmaster .cf-handle,
+.rank-legendary-grandmaster .cf-handle { color: #ff0000 !important; }
+
+/* Tooltip Array metrics */
+.cf-solved-hover {
+  font-size: 10px;
+  color: #666;
+  margin-left: 6px;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* Premium Toggle Switch */
+.cf-theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  margin-right: 12px;
+}
+.cf-theme-switch input { opacity: 0; width: 0; height: 0; }
+.cf-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.08);
+  transition: .4s;
+  border-radius: 24px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.cf-slider:before {
+  position: absolute;
+  content: "☀️";
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  transition: .4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+input:checked + .cf-slider {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255,255,255,0.2);
+}
+input:checked + .cf-slider:before {
+  transform: translateX(20px);
+  content: "🌙";
+  background-color: #1a1a2e;
+}
+
+/* Dark Mode Overrides */
+.cf-dark-mode, .cf-dark-mode .cf-minimized-btn {
+  background: rgba(20, 20, 30, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #eee !important;
+}
+.cf-dark-mode .cf-header h3 { color: #fff !important; }
+.cf-dark-mode li:hover { background: rgba(255, 255, 255, 0.1) !important; border-color: transparent !important; }
+.cf-dark-mode .cf-solved { background: rgba(255, 255, 255, 0.15) !important; color: #fff !important; }
+.cf-dark-mode .cf-add-friend-box input { background: rgba(0, 0, 0, 0.3) !important; color: #fff !important; }
+.cf-dark-mode .cf-add-friend-box input::placeholder { color: #888 !important; }
+.cf-dark-mode .cf-solved-hover { color: #aaa !important; }

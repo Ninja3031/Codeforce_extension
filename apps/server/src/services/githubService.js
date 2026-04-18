@@ -9,7 +9,11 @@ export const pushToGithub = async ({ problemName, code, language, contestId }) =
   const owner = process.env.GITHUB_USERNAME;
   const repo = process.env.GITHUB_REPO;
 
-  // ✅ Clean filename
+  if (!owner || !repo || !process.env.GITHUB_TOKEN) {
+    throw new Error("Missing GitHub configuration (GITHUB_USERNAME, GITHUB_REPO, GITHUB_TOKEN)");
+  }
+
+  //  Clean filename
   const formattedName = (problemName || "unknown_problem")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "_");
@@ -33,7 +37,7 @@ export const pushToGithub = async ({ problemName, code, language, contestId }) =
   const content = Buffer.from(code || "").toString("base64");
 
   try {
-    // 🔍 Check if file exists
+    //  Check if file exists
     let sha = null;
 
     try {
@@ -65,10 +69,10 @@ export const pushToGithub = async ({ problemName, code, language, contestId }) =
 
     try {
       await octokit.rest.repos.createOrUpdateFileContents(params);
-      console.log(`✅ ${sha ? "Updated" : "Created"}:`, fileName);
+      console.log(` ${sha ? "Updated" : "Created"}:`, fileName);
     } catch (err) {
       // 🔁 Retry if SHA issue
-      if (err.status === 422 && /sha wasn't supplied/i.test(err.message || "")) {
+      if (err.status === 409 && /sha wasn't supplied/i.test(err.message || "")) {
         const fresh = await octokit.rest.repos.getContent({
           owner,
           repo,

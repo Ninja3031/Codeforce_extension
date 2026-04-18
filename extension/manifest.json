@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "CF Friends Tracker",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting", "notifications"],
   "host_permissions": [
     "http://localhost:8000/*",
     "https://codeforces.com/*"

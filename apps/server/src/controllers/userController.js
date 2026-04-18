@@ -1,9 +1,13 @@
 import { User } from "../models/userModel.js";
 
-// ➕ Create User
+//  Create User
 export const createUser = async (req, res) => {
   try {
     const { username, codeforcesHandle } = req.body;
+
+    if (!username || !codeforcesHandle) {
+      return res.status(400).json({ error: "username and codeforcesHandle are required" });
+    }
 
     const user = await User.create({
       username,

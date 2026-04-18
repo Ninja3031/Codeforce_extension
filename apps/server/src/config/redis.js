@@ -4,6 +4,6 @@ export const redisConnection = new IORedis({
   host: process.env.REDIS_HOST,
   port: process.env.REDIS_PORT,
 
-  // ✅ REQUIRED for BullMQ
+  //  REQUIRED for BullMQ
   maxRetriesPerRequest: null,
 });

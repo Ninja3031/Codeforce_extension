@@ -8,6 +8,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true; // required for async response
   }
   
+  if (request.type === "SHOW_NOTIFICATION") {
+    chrome.notifications.create(request.notificationId || "", {
+      type: "basic",
+      iconUrl: "images/icon48.png", // Assuming valid or default
+      title: request.title || "Codeforces Update",
+      message: request.message || ""
+    });
+    return true;
+  }
+
   if (request.type === "API_REQUEST") {
     const options = {
       method: request.method || "GET",
